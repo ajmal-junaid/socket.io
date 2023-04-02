@@ -31,11 +31,6 @@ socket.on("send_message",(data)=>{
     })
 })
 
-
-
-
-
-
 server.listen(3003, () => {
     console.log(
         "server is running in port 3003"
