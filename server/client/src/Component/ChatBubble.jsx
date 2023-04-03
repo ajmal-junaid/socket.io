@@ -11,10 +11,14 @@ function ChatBubble({ message, isUser, time, author }) {
     <div className={`flex ${isUser ? "flex-row-reverse" : ""} mb-4`}>
       <div className={bubbleClasses}>
         <div className="flex justify-between items-center mb-2">
-          <p className="text-xs font-medium text-red  -500">
+          <p className="text-xs font-medium justify-start">
             {isUser ? "you" : author}
           </p>
-          <p className="text-xs text-gray-400">{time}</p>
+          <p
+            className={`text-xs ${isUser ? "text-gray-100" : "text-gray-500"}`}
+          >
+            {time}
+          </p>
         </div>
         <p className="text-sm leading-6">{message}</p>
       </div>

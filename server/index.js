@@ -8,8 +8,7 @@ app.use(cors());
 const server = http.createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: '*',
-        methods: ["GET", "POST"]
+        origin: ['http://localhost:5173','http://192.168.48.11:3000','https://socket-io-khaki.vercel.app','*']
     }
 })
 // origin:"http://localhost:3003"
@@ -17,14 +16,14 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
     console.log(`user connected to : ${socket.id}`)
 
-socket.on("join_room",(data)=>{
-    socket.join(data);
-    console.log(`user:  ${socket.id} , joined room :${data}`)
-})
+    socket.on("join_room", (data) => {
+        socket.join(data);
+        console.log(`user:  ${socket.id} , joined room :${data}`)
+    })
 
-socket.on("send_message",(data)=>{
-    socket.to(data.room).emit("recieve_message",data)
-})
+    socket.on("send_message", (data) => {
+        socket.to(data.room).emit("recieve_message", data)
+    })
 
     socket.on("disconnect", () => {
         console.log("user disconnected", socket.id);
@@ -32,7 +31,9 @@ socket.on("send_message",(data)=>{
 })
 
 server.listen(3003, () => {
+
+server.listen(4000, () => {
     console.log(
-        "server is running in port 3003"
+        "server is running"
     );
 })
