@@ -8,7 +8,7 @@ app.use(cors());
 
 // const server = http.createServer(app);
 const server = app.listen(PORT, () => {
-    console.log(`Server Running on http://localhost:${PORT}`);
+    console.log(`Server Running on port ${PORT}`);
 })
 // const io = new Server(server, {
 //     cors: {
@@ -19,7 +19,7 @@ const server = app.listen(PORT, () => {
 const io = require("socket.io")(server, {
     // pingTimeout: 60000,
     cors: {
-        origin: "http://localhost:3000",
+        origin: ["http://localhost:3000","https://socket-io-khaki.vercel.app"," http://localhost:5173"],
     }
 });
 // origin:"http://localhost:3003"
