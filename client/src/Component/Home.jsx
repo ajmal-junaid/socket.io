@@ -3,7 +3,7 @@ import { FaSignInAlt, FaUserFriends } from "react-icons/fa";
 import { motion } from "framer-motion";
 import io from "socket.io-client";
 import { Chat } from "./Chat";
-const socket = io.connect("http://localhost:4000");
+const socket = io.connect("https://my-chat-app-efly.onrender.com");
 
 function Home() {
   const [userId, setUserId] = useState("");
