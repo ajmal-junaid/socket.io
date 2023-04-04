@@ -7,15 +7,10 @@ const socket = io.connect("https://my-chat-app-efly.onrender.com");
 
 function Home() {
   const [userId, setUserId] = useState("");
-  const [roomId, setRoomId] = useState("");
   const [login, setLogin] = useState(false);
-
+  const roomId = "12345";
   const handleUserIdChange = (event) => {
     setUserId(event.target.value);
-  };
-
-  const handleRoomIdChange = (event) => {
-    setRoomId(event.target.value);
   };
 
   const handleSubmit = (event) => {
@@ -33,9 +28,11 @@ function Home() {
         <nav className="flex justify-between items-center container mx-auto">
           <a href="/" className="text-2xl font-bold text-white">
             My Chat App
-          </a>
+          </a>{" "}
           <button className="text-gray-300 hover:text-white focus:outline-none focus:text-white">
-            Menu
+            <p className="text-sm border p-3 float-right mx-auto">
+              {userId && login ? `userId: ${userId}` : "Login"}
+            </p>
           </button>
         </nav>
       </header>
@@ -75,7 +72,7 @@ function Home() {
               id="roomId"
               name="roomId"
               value={roomId}
-              onChange={handleRoomIdChange}
+              disabled
               placeholder="Enter the room ID"
               className="rounded-lg border border-gray-400 p-2 mb-4 focus:outline-none focus:ring focus:border-blue-300"
             />
